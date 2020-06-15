@@ -1,6 +1,8 @@
-# baby-app-client
+# Baby Shower App [Nathaniel] 👶🏼
 
-## Project setup
+![alt text](./assets-readme/71585-OD8CWM-671.jpg)
+
+## Project setup Client
 ```
 npm install
 ```
@@ -14,11 +16,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
