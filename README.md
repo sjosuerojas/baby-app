@@ -1,4 +1,4 @@
-# Baby Shower App [Nathaniel] 👶🏼
+# Baby Shower App 👶🏼
 
 ![alt text](./assets-readme/71585-OD8CWM-671.jpg)
 
