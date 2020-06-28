@@ -4,6 +4,7 @@ const TersetJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
+  mode: 'production',
   entry: {
     modules: [ 
       'vue', 
@@ -25,7 +26,7 @@ module.exports = {
   plugins: [
     new webpack.DllPlugin({
       name: '[name]',
-      path: path.join(__dirname, '[name]-manifest.json')
+      path: path.join(__dirname, 'dist/[name]-manifest.json')
     })
   ],
 }

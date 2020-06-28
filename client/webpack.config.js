@@ -27,6 +27,7 @@ module.exports = env => {
   }, {});
 
   return {
+    mode: 'production',
     entry: {
       app: path.resolve(__dirname, 'src/main.js'),
     },

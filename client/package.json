@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start:dev": "webpack-dev-server --env.ENVIRONMENT=development --config ./webpack.dev.config.js",
-    "build:dll": "webpack --config --env.ENVIRONMENT=production ./webpack.dll.config.js",
-    "build": "webpack --config --env.ENVIRONMENT=production ./webpack.config.js"
+    "build:dll": "webpack --env.ENVIRONMENT=production --config ./webpack.dll.config.js",
+    "build": "webpack --env.ENVIRONMENT=production --config ./webpack.config.js"
   },
   "dependencies": {
     "axios": "0.19.2",

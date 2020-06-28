@@ -1,17 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-const title = 'Baby Shower';
-
-// Containers
-const Container = () => import('@/containers/Container');
-
 // Public Pages
-const Invitation = () => import('@/views/Invitation');
-const Thanks = () => import('@/views/Invitation');
+import Invitation from '@/views/Invitation.vue';
 
 // Components
-const Page404 = () => import('@/components/Page404');
+import Page404 from '@/components/Page404.vue';
 
 Vue.use(VueRouter);
 
@@ -24,57 +18,32 @@ export const router = new VueRouter({
 function configRoutes() {
   return [
     {
-      path: '/pages',
-      redirect: '/pages/inivitation',
-      name: 'Pages',
-      component: {
-        render(c) {
-          return c('router-view');
-        },
+      path: '/',
+      name: 'Invitation',
+      component: Invitation,
+      meta: {
+        title: `Baby shower | Invitación`,
       },
-      children: [
-        {
-          path: 'invitation',
-          name: 'Invitation',
-          component: Invitation,
-          meta: {
-            title: `${title} | Invitación`,
-            isPublic: true,
-          },
-        },
-        {
-          path: 'thank-you',
-          name: 'Thanks',
-          component: Thanks,
-          meta: {
-            title: `${title} | Agradecimientos`,
-            isPublic: true,
-          },
-        },
-      ],
+    },
+    {
+      path: '/thank-you',
+      name: 'Thanks',
+      component: () => import('@/views/Thanks.vue'),
+      meta: {
+        title: `Baby shower | Agradecimientos`,
+      },
     },
     {
       path: '*',
       component: Page404,
       meta: {
-        title: `${title} | 404 Pagina no encontrada`,
+        title: `Baby shower | 404 Pagina no encontrada`,
       },
     },
   ];
 }
 
-const isAuthenticated = function() {
-  return window.localStorage.user;
-};
-
 router.beforeEach((to, from, next) => {
-  if (!to.meta.isPublic && !isAuthenticated()) {
-    return next({ name: 'Login' });
-  }
-
-  if (to.name === 'Login' && isAuthenticated()) {
-    return next({ name: 'Dashboard' });
-  }
 
   const nearestWithTitle = to.matched
     .slice()
