@@ -34,15 +34,15 @@ module.exports = env => {
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'js/[name].[hash].js',
-      chunkFilename: 'js/[id].[chunkhash].js',
-    },
-    optimization: {
-      minimizer: [new TersetJSPlugin(), new OptimizeCSSAssetsPlugin()],
+      chunkFilename: 'js/[id].[chunkhash].js', 
     },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
       },
+    },
+    optimization: {
+      minimizer: [new TersetJSPlugin(), new OptimizeCSSAssetsPlugin()],
     },
     module: {
       rules: [
@@ -92,11 +92,12 @@ module.exports = env => {
         {
           test: /\.jpg|png|gif|woff|eot|ttf|svg|mp4|webm$/,
           use: {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              limit: 1000,
-              name: '[hash].[ext]',
-              outputPath: 'assets',
+              esModule: false, 
+              name: '[hash].[ext]', 
+              outputPath: './assets/',
+              publicPath: './assets/' 
             },
           },
         },
@@ -112,7 +113,7 @@ module.exports = env => {
         template: path.resolve(__dirname, 'public/index.html'),
       }),
       new webpack.DllReferencePlugin({
-        manifest: require('./modules-manifest.json'),
+        manifest: require(`${ __dirname }/dist/modules-manifest.json`),
       }),
       new AddAssetHtmlPlugin({
         filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),

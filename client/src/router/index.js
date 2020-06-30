@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // Public Pages
-import Invitation from '@/views/Invitation.vue';
+import Welcome from '@/views/Welcome.vue';
 
 // Components
 import Page404 from '@/components/Page404.vue';
@@ -19,8 +19,8 @@ function configRoutes() {
   return [
     {
       path: '/',
-      name: 'Invitation',
-      component: Invitation,
+      name: 'Welcome',
+      component: Welcome,
       meta: {
         title: `Baby shower | Invitación`,
       },
